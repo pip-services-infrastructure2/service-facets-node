@@ -5,7 +5,7 @@ import { FacetsMongoDbPersistence } from '../persistence/FacetsMongoDbPersistenc
 import { FacetsFilePersistence } from '../persistence/FacetsFilePersistence';
 import { FacetsMemoryPersistence } from '../persistence/FacetsMemoryPersistence';
 import { FacetsController } from '../logic/FacetsController';
-import { FacetsHttpServiceV1 } from '../services/version1/FacetsHttpServiceV1';
+import { FacetsCommandableHttpServiceV1 } from '../services/version1/FacetsCommandableHttpServiceV1';
 
 export class FacetsServiceFactory extends Factory {
 	public static Descriptor = new Descriptor("service-facets", "factory", "default", "default", "1.0");
@@ -13,7 +13,7 @@ export class FacetsServiceFactory extends Factory {
 	public static FilePersistenceDescriptor = new Descriptor("service-facets", "persistence", "file", "*", "1.0");
 	public static MongoDbPersistenceDescriptor = new Descriptor("service-facets", "persistence", "mongodb", "*", "1.0");
 	public static ControllerDescriptor = new Descriptor("service-facets", "controller", "default", "*", "1.0");
-	public static HttpServiceDescriptor = new Descriptor("service-facets", "service", "http", "*", "1.0");
+	public static HttpServiceDescriptor = new Descriptor("service-facets", "service", "commandable-http", "*", "1.0");
 	
 	constructor() {
 		super();
@@ -21,7 +21,7 @@ export class FacetsServiceFactory extends Factory {
 		this.registerAsType(FacetsServiceFactory.FilePersistenceDescriptor, FacetsFilePersistence);
 		this.registerAsType(FacetsServiceFactory.MongoDbPersistenceDescriptor, FacetsMongoDbPersistence);
 		this.registerAsType(FacetsServiceFactory.ControllerDescriptor, FacetsController);
-		this.registerAsType(FacetsServiceFactory.HttpServiceDescriptor, FacetsHttpServiceV1);
+		this.registerAsType(FacetsServiceFactory.HttpServiceDescriptor, FacetsCommandableHttpServiceV1);
 	}
 	
 }

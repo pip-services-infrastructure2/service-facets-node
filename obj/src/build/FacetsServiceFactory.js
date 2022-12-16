@@ -7,7 +7,7 @@ const FacetsMongoDbPersistence_1 = require("../persistence/FacetsMongoDbPersiste
 const FacetsFilePersistence_1 = require("../persistence/FacetsFilePersistence");
 const FacetsMemoryPersistence_1 = require("../persistence/FacetsMemoryPersistence");
 const FacetsController_1 = require("../logic/FacetsController");
-const FacetsHttpServiceV1_1 = require("../services/version1/FacetsHttpServiceV1");
+const FacetsCommandableHttpServiceV1_1 = require("../services/version1/FacetsCommandableHttpServiceV1");
 class FacetsServiceFactory extends pip_services3_components_nodex_1.Factory {
     constructor() {
         super();
@@ -15,7 +15,7 @@ class FacetsServiceFactory extends pip_services3_components_nodex_1.Factory {
         this.registerAsType(FacetsServiceFactory.FilePersistenceDescriptor, FacetsFilePersistence_1.FacetsFilePersistence);
         this.registerAsType(FacetsServiceFactory.MongoDbPersistenceDescriptor, FacetsMongoDbPersistence_1.FacetsMongoDbPersistence);
         this.registerAsType(FacetsServiceFactory.ControllerDescriptor, FacetsController_1.FacetsController);
-        this.registerAsType(FacetsServiceFactory.HttpServiceDescriptor, FacetsHttpServiceV1_1.FacetsHttpServiceV1);
+        this.registerAsType(FacetsServiceFactory.HttpServiceDescriptor, FacetsCommandableHttpServiceV1_1.FacetsCommandableHttpServiceV1);
     }
 }
 exports.FacetsServiceFactory = FacetsServiceFactory;
@@ -24,5 +24,5 @@ FacetsServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commons_nod
 FacetsServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-facets", "persistence", "file", "*", "1.0");
 FacetsServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-facets", "persistence", "mongodb", "*", "1.0");
 FacetsServiceFactory.ControllerDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-facets", "controller", "default", "*", "1.0");
-FacetsServiceFactory.HttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-facets", "service", "http", "*", "1.0");
+FacetsServiceFactory.HttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-facets", "service", "commandable-http", "*", "1.0");
 //# sourceMappingURL=FacetsServiceFactory.js.map

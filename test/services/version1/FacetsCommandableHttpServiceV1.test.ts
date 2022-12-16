@@ -7,7 +7,7 @@ import { References } from 'pip-services3-commons-nodex';
 
 import { FacetsMemoryPersistence } from '../../../src/persistence/FacetsMemoryPersistence';
 import { FacetsController } from '../../../src/logic/FacetsController';
-import { FacetsHttpServiceV1 } from '../../../src/services/version1/FacetsHttpServiceV1';
+import { FacetsCommandableHttpServiceV1 } from '../../../src/services/version1/FacetsCommandableHttpServiceV1';
 
 let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
@@ -18,7 +18,7 @@ let httpConfig = ConfigParams.fromTuples(
 
 suite('FacetsHttpServiceV1', ()=> {
     let persistence: FacetsMemoryPersistence;
-    let service: FacetsHttpServiceV1;
+    let service: FacetsCommandableHttpServiceV1;
 
     let rest: any;
 
@@ -26,13 +26,13 @@ suite('FacetsHttpServiceV1', ()=> {
         persistence = new FacetsMemoryPersistence();
         let controller = new FacetsController();
 
-        service = new FacetsHttpServiceV1();
+        service = new FacetsCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('service-facets', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-facets', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-facets', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-facets', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);

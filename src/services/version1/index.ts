@@ -1,1 +1,1 @@
-export { FacetsHttpServiceV1 } from './FacetsHttpServiceV1';
+export { FacetsCommandableHttpServiceV1 as FacetsHttpServiceV1 } from './FacetsCommandableHttpServiceV1';
